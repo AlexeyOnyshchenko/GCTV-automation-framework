@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" >
+    <test name="Videos" >
+        <classes>
+            <class name="Videos.AddVideoCategory" />
+        </classes>
+    </test>
+
+    <test name="Movies">
+        <classes>
+            <class name="Movies.AddMovieCategory"/>
+        </classes>
+    </test>
+</suite>

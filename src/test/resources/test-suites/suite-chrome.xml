@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Test Suite on Chrome for SST" configfailurepolicy="continue">
+	<test name="User Login Test" >
+	    <parameter name="browserName" value="chrome" />
+		<parameter name="url" value="http://localhost:1337/auth" />
+		<classes>
+			<class name="movie.MovieCategoryTests"/>
+			<class name="movie.MoviesTest">
+
+			</class>
+		</classes>
+	</test>
+</suite>

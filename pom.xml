@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>childLifeTV</groupId>
+    <artifactId>childLifeTV</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <resources.plugin.version>2.7</resources.plugin.version>
+        <!-- plugins -->
+        <maven.compiler.plugin.version>3.0</maven.compiler.plugin.version>
+        <java.compliler.version>1.7</java.compliler.version>
+        <surefire.plugin.version>2.20</surefire.plugin.version>
+
+
+        <!--dependencies -->
+        <selenium.version>3.4.0</selenium.version>
+        <testng.version>6.11</testng.version>
+
+        <!-- allure report props -->
+        <allure.plugin.version>2.5</allure.plugin.version>
+        <allure.version>1.5.0.RC2</allure.version>
+        <aspectj.version>1.8.10</aspectj.version>
+
+        <allure.xml.dir>xml-test-report</allure.xml.dir>
+        <allure.results.directory>${project.build.directory}/${allure.xml.dir}</allure.results.directory>
+
+        <!-- https://mvnrepository.com/artifact/ru.yandex.qatools.allure/allure-java-annotations -->
+        <!--<dependency>-->
+            <!--<groupId>ru.yandex.qatools.allure</groupId>-->
+            <!--<artifactId>allure-java-annotations</artifactId>-->
+            <!--<version>1.5.2</version>-->
+        <!--</dependency>-->
+
+        <!-- Logger -->
+        <logback.version>1.1.2</logback.version>
+        <slf4j.version>1.7.7</slf4j.version>
+
+        <!-- ashot for screenshot -->
+        <ashot.version>1.3</ashot.version>
+    </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
+<!--        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>2.51.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>2.51.0</version>
+        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+
+
+        <!-- Test NG dependency -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.11</version>
+        </dependency>
+        <!-- Logger -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <!-- screenshoter -->
+        <dependency>
+            <groupId>ru.yandex.qatools.ashot</groupId>
+            <artifactId>ashot</artifactId>
+            <version>${ashot.version}</version>
+        </dependency>
+
+        <!-- reporting allure 3rd party adapter for testng -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.0-BETA16</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>2.53.1</version>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>2.53.0</version>
+        </dependency>-->
+        <dependency>
+            <groupId>childLifeTV</groupId>
+            <artifactId>childLifeTV</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>2.53.0</version>
+        </dependency>-->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${resources.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${java.compliler.version}</source>
+                    <target>${java.compliler.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.plugin.version}</version>
+                <configuration>
+            <!--        <testFailureIgnore>true</testFailureIgnore>
+
+                    <forkCount>1</forkCount>
+                    <reuseForks>true</reuseForks>
+
+                    <systemPropertyVariables>
+                        <reporter.debug>false</reporter.debug>
+                    </systemPropertyVariables>-->
+                    <suiteXmlFiles>
+                        <!--<suiteXmlFile>src/test/resources/test-suites/${suiteXmlFile}</suiteXmlFile>-->
+                        <suiteXmlFile>src/test/resources/test-suites/suite-chrome.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                    </argLine>
+                    <properties>
+                        <!-- generate deafult testng reports or not -->
+                        <property>
+                            <name>usedefaultlisteners</name>
+                            <value>true</value>
+                        </property>
+                        <property>
+                            <name>listener</name>
+                            <value>
+                                listeners.ConfigurationReportListener,
+                                listeners.ScreenshotFailureTestListener
+                            </value>
+                        </property>
+                    </properties>
+                    <systemProperties>
+                        <property>
+                            <name>test-logs</name>
+                            <value>target/test-logs</value>
+                        </property>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>${allure.results.directory}</value>
+                        </property>
+                        <property>
+                            <name>xml-report-folder</name>
+                            <value>target/${allure.xml.dir}</value>
+                        </property>
+                        <property>
+                            <name>environment.configuration</name>
+                            <value>src/main/resources/environment.properties</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.8</version>
+            </plugin>
+        </plugins>
+    </build>
+
+<!--
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>ru.yandex.qatools.allure</groupId>
+                <artifactId>allure-maven-plugin</artifactId>
+                <version>${allure.plugin.version}</version>
+                <configuration>
+                    <resultsDirectory>${allure.xml.dir}</resultsDirectory>
+                    <reportDirectory>${project.build.directory}/graph-test-report</reportDirectory>
+                    <properties>
+                        <allure.issues.tracker.pattern>https://issues.corp.twilio.com/browse/%s</allure.issues.tracker.pattern>
+                    </properties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+-->
+
+
+
+
+
+</project>
